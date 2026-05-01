@@ -1,5 +1,7 @@
 #include <iostream>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include "game.h"
 using namespace std;
 
@@ -12,4 +14,3 @@ int main(){
     g.play();
     return 0;
 }
-
