@@ -6,7 +6,6 @@
 #endif
 using namespace std;
 
-// ─── ANSI escape codes ────────────────────────────────────────
 #define RESET       "\033[0m"
 #define BOLD        "\033[1m"
 
@@ -22,9 +21,8 @@ using namespace std;
 #define CHECK_BG    "\033[48;5;196m"  // bright red background
 #define CHECK_FG    "\033[97;1m"      // bold bright white text
 
-// Border / label colors
-#define BORDER_CLR  "\033[38;5;245m"  // soft gray
-#define LABEL_CLR   "\033[38;5;214m"  // gold / amber
+#define BORDER_CLR  "\033[38;5;245m" 
+#define LABEL_CLR   "\033[38;5;214m"  
 
 Board::Board() { init(); }
 
@@ -82,7 +80,6 @@ static void printCellMid(Piece* p, bool lightSquare, bool isCheckKing){
     }
 }
 
-// helper to compute check flag for a cell
 static bool isCheckKingAt(Piece* p, bool whiteInCheck, bool blackInCheck){
     if(!p) return false;
     King* k = dynamic_cast<King*>(p);
@@ -106,11 +103,10 @@ void Board::show(){
 
     cout << "\n";
 
-    // Column labels on top
     cout << LABEL_CLR << "      a    b    c    d    e    f    g    h" << RESET << "\n";
 
     for(int i = 0; i < 8; i++){
-        // --- Top padding row ---
+    
         cout << "    ";
         for(int j = 0; j < 8; j++){
             bool light = (i + j) % 2 == 0;
@@ -119,7 +115,6 @@ void Board::show(){
         }
         cout << "\n";
 
-        // --- Middle row with piece ---
         cout << LABEL_CLR << " " << (8 - i) << "  " << RESET;
         for(int j = 0; j < 8; j++){
             bool light = (i + j) % 2 == 0;
@@ -128,7 +123,6 @@ void Board::show(){
         }
         cout << LABEL_CLR << "  " << (8 - i) << RESET << "\n";
 
-        // --- Bottom padding row ---
         cout << "    ";
         for(int j = 0; j < 8; j++){
             bool light = (i + j) % 2 == 0;
