@@ -3,8 +3,15 @@
 
 #include <vector>
 #include <utility>
+#include <string>
 #include "piece.h"
 using namespace std;
+
+struct Move {
+    int sx, sy, ex, ey;
+    Piece* captured;
+    string notation;
+};
 
 class Board {
 public:
@@ -17,6 +24,10 @@ public:
     void show();
     pair<int,int> findKing(bool col);
     bool check(bool col);
+    
+    Piece* applyMove(int sx, int sy, int ex, int ey);
+    void undoMove(int sx, int sy, int ex, int ey, Piece* captured);
+    
     ~Board();
 };
 
